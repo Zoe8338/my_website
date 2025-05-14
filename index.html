@@ -2,90 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Zoe's Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My IT Journey</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 1rem;
-      background-color: #fefefe;
-      color: #333;
-    }
-
-    h1, h2 {
-      color: #444;
-    }
-
-    .bio {
-      margin-bottom: 2rem;
-      padding: 1rem;
-      background: #e3f2fd;
-      border-left: 5px solid #2196f3;
-    }
-
-    .blog-post {
-      background: white;
-      padding: 1rem;
-      margin-bottom: 2rem;
-      border: 1px solid #ddd;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-
-    .blog-post h2 {
-      margin-top: 0;
-    }
-  </style>
 </head>
 <body>
-  <h1>Welcome to Zoe's Blog</h1>
+  <header>
+    <h1>Olá, I'm a Self-Hosting Enthusiast from Portugal 🇵🇹</h1>
+    <p>IT tinkerer | Network nerd | Future sysadmin</p>
+  </header>
 
-  <div class="bio">
-    <p>Hi! I'm Zoe. I enjoy building websites, experimenting with code, and sharing what I learn along the way. Welcome to my little corner of the web!</p>
-  </div>
+  <main>
+    <section class="about">
+      <h2>About Me</h2>
+      <p>I'm a 22-year-old from the Southwest Algarve who loves working with servers, networks, and figuring out how systems work. By day I work in customer service, but my evenings and weekends are all about self-hosting and IT learning.</p>
+    </section>
 
-  <div id="blog-container">
-    <p>Loading blog posts...</p>
-  </div>
+    <section class="journey">
+      <h2>My IT Journey</h2>
+      <ul>
+        <li>🖥️ Installed Proxmox on an old laptop</li>
+        <li>🔌 Set up external USB HDD storage</li>
+        <li>🌐 Created a secure tunnel with Pangolin for remote access</li>
+        <li>🐳 Running Docker containers: Dockage, Paperless NGX, Snipe-IT, Ghost</li>
+        <li>📚 Studying for CompTIA Network+ and learning German in my spare time</li>
+      </ul>
+    </section>
 
-  <!-- Markdown parser -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <section class="contact">
+      <h2>Get in Touch</h2>
+      <p>Email: <a href="mailto:your@email.com">your@email.com</a></p>
+      <p>GitHub: <a href="https://github.com/yourusername">github.com/yourusername</a></p>
+    </section>
+  </main>
 
-  <script>
-    const posts = [
-      { filename: '2025-04-30-first-blog-post.md', title: 'My First Blog Post' },
-      { filename: 'another_post.md', title: 'Another Update' }
-      // Add more posts here as needed
-    ];
-
-    async function loadPosts() {
-      const container = document.getElementById('blog-container');
-      container.innerHTML = '';
-
-      for (const post of posts) {
-        try {
-          const res = await fetch(`_posts/${post.filename}`);
-          if (!res.ok) throw new Error(`Could not load ${post.filename}`);
-          const md = await res.text();
-          const html = marked.parse(md);
-
-          const postDiv = document.createElement('div');
-          postDiv.className = 'blog-post';
-          postDiv.innerHTML = `<h2>${post.title}</h2>${html}`;
-          container.appendChild(postDiv);
-        } catch (err) {
-          console.error(err);
-          container.innerHTML += `<p>Failed to load: ${post.filename}</p>`;
-        }
-      }
-    }
-
-    loadPosts();
-  </script>
+  <footer>
+    <p>© 2025 by You. Built with ❤️ and hosted on GitHub Pages.</p>
+  </footer>
 </body>
 </html>
 
-</body>
-</html>
