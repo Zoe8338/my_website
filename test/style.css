@@ -78,9 +78,8 @@ nav .brand-logo {
     border-radius: 8px;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
     transition: all 0.3s ease-in-out;
-    height: 100%; /* Important for equal height in flexbox containers */
-    display: flex; /* Make card-panel a flex container */
-    flex-direction: column; /* Stack content vertically */
+    /* Removed problematic flex properties that interfered with Materialize's layout */
+    /* display: flex; flex-direction: column; height: 100%; */
 }
 
 .card-panel:hover, .card:hover {
@@ -94,23 +93,41 @@ nav .brand-logo {
     object-fit: cover; /* Ensure images fill the space well */
 }
 
-.card .card-content, .card .card-reveal {
-    flex-grow: 1; /* Allow content to grow and fill available space */
-    display: flex;
-    flex-direction: column;
-}
-
+/* Ensure Materialize card-reveal works correctly */
+/* Default Materialize CSS handles this, but ensuring no conflicts */
 .card .card-reveal {
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    /* flex-grow: 1; Removed this as it can interfere with Materialize's absolute positioning */
+    /* display: flex; flex-direction: column; Removed these */
+    padding: 24px; /* Ensure sufficient padding inside the reveal */
+    background-color: #fff; /* Ensure it has a background */
+    will-change: top, left, height, width; /* Hint to browser for animation */
 }
 
-/* Skills Section Specific Alignment */
-.section#skills .row {
-    display: flex; /* Make the row a flex container */
-    flex-wrap: wrap; /* Allow items to wrap to the next line */
-    align-items: stretch; /* This ensures all cards in a row have equal height */
+
+/* Skills Section Specific Alignment and Spacing */
+.skills-grid { /* Applies to the row containing skill cards */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch; /* Makes cards in the same row equal height */
+    margin-bottom: -15px; /* Adjusts for Materialize's default column margin-bottom */
 }
+
+.skills-grid .col {
+    margin-bottom: 30px; /* Add consistent bottom margin for spacing between rows */
+}
+
+/* Projects Section Specific Alignment and Spacing (similar to skills) */
+.projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch; /* Makes cards in the same row equal height */
+    margin-bottom: -15px; /* Adjusts for Materialize's default column margin-bottom */
+}
+
+.projects-grid .col {
+    margin-bottom: 30px; /* Add consistent bottom margin for spacing between rows */
+}
+
 
 /* Skills Section Icons */
 .skills .card-panel i {
@@ -126,26 +143,29 @@ nav .brand-logo {
 }
 
 /* Contact Section Buttons Alignment */
-/* Adjust these styles as needed for your desired button layout */
-#contact .card-panel .row {
+.contact-buttons-container { /* This targets the specific row with the two buttons */
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center buttons horizontally */
-    align-items: center; /* Vertically align them if they were different heights */
+    justify-content: center; /* Center the buttons within this row */
+    margin-top: 20px; /* Add some space above the buttons */
+    margin-bottom: 20px; /* Add some space below the two main buttons */
 }
 
-#contact .card-panel .row .col {
-    display: flex; /* Make column a flex container for its button */
-    justify-content: center; /* Center the button within its column */
-    margin-bottom: 15px; /* Add some space between buttons when stacked */
+.contact-buttons-container .col {
+    display: flex; /* Make the column a flex container */
+    justify-content: center; /* Center content (the button) within the column */
+    padding: 0 10px; /* Add some horizontal padding around the columns to space buttons */
+    margin-bottom: 15px; /* Space between stacked buttons on small screens */
 }
 
-@media screen and (min-width: 601px) { /* Only apply on medium and larger screens */
-    #contact .card-panel .row .col {
-        margin-bottom: 0; /* Remove bottom margin when side-by-side */
-    }
+.contact-buttons-container .col:last-child {
+    margin-bottom: 0; /* Remove bottom margin for the last button in the row when stacked */
 }
 
+.full-width-btn { /* Utility class for buttons in this section */
+    width: 100%; /* Make button take full width of its column */
+    max-width: 280px; /* Limit max width for better aesthetics on large screens */
+}
 
 /* Footer */
 footer.page-footer {
@@ -180,8 +200,4 @@ footer.page-footer .footer-copyright {
     .hero-section h5 {
         font-size: 1rem;
     }
-    /* Materialize already stacks columns on small screens, so these are less critical for stacking */
-    /* .card-panel, .card {
-        margin-bottom: 20px;
-    } */
 }
