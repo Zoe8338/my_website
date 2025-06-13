@@ -1,0 +1,148 @@
+/* Custom CSS for your website */
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif; /* Ensure Roboto is used */
+    background-color: #f5f5f5; /* Light background for the body */
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Navbar adjustments */
+nav .brand-logo {
+    font-weight: 500;
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 600px; /* Adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden; /* For parallax image */
+}
+
+.hero-section h1 {
+    font-weight: 700; /* Bolder headline */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Subtle shadow for readability */
+}
+
+.hero-section h5 {
+    font-weight: 300;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.hero-section .btn-large {
+    margin: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.hero-section .btn-large.light-blue.darken-1 {
+    background-color: #0277bd !important; /* Deeper blue for primary CTA */
+}
+
+.hero-section .btn-large.light-blue.darken-1:hover {
+    background-color: #01579b !important; /* Even deeper on hover */
+}
+
+.hero-section .btn-large.transparent {
+    border: 2px solid white;
+}
+
+.hero-section .btn-large.transparent:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+
+/* General Section Styling */
+.section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.section h2 {
+    font-weight: 500;
+    margin-bottom: 40px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0; /* Subtle underline */
+}
+
+/* Card Styling (Skills & Projects) */
+.card-panel, .card {
+    border-radius: 8px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    transition: all 0.3s ease-in-out;
+}
+
+.card-panel:hover, .card:hover {
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+    transform: translateY(-3px); /* Subtle lift on hover */
+}
+
+.card .card-image img {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    object-fit: cover; /* Ensure images fill the space well */
+}
+
+.card .card-reveal {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Skills Section Icons */
+.skills .card-panel i {
+    margin-bottom: 15px;
+}
+
+/* Projects Chips */
+.chip {
+    margin: 4px;
+    background-color: #e0e0e0;
+    color: #424242;
+    font-weight: 400;
+}
+
+/* Footer */
+footer.page-footer {
+    padding-top: 20px; /* Adjust padding */
+}
+
+footer.page-footer .footer-copyright {
+    background-color: rgba(0,0,0,0.2);
+    padding: 10px 0;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 992px) {
+    .hero-section {
+        min-height: 450px;
+    }
+    .hero-section h1 {
+        font-size: 3rem;
+    }
+    .hero-section h5 {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .hero-section {
+        min-height: 400px;
+    }
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    .hero-section h5 {
+        font-size: 1rem;
+    }
+    .card-panel, .card {
+        margin-bottom: 20px;
+    }
+}
