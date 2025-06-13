@@ -78,6 +78,9 @@ nav .brand-logo {
     border-radius: 8px;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
     transition: all 0.3s ease-in-out;
+    height: 100%; /* Important for equal height in flexbox containers */
+    display: flex; /* Make card-panel a flex container */
+    flex-direction: column; /* Stack content vertically */
 }
 
 .card-panel:hover, .card:hover {
@@ -91,9 +94,22 @@ nav .brand-logo {
     object-fit: cover; /* Ensure images fill the space well */
 }
 
+.card .card-content, .card .card-reveal {
+    flex-grow: 1; /* Allow content to grow and fill available space */
+    display: flex;
+    flex-direction: column;
+}
+
 .card .card-reveal {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
+}
+
+/* Skills Section Specific Alignment */
+.section#skills .row {
+    display: flex; /* Make the row a flex container */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    align-items: stretch; /* This ensures all cards in a row have equal height */
 }
 
 /* Skills Section Icons */
@@ -108,6 +124,28 @@ nav .brand-logo {
     color: #424242;
     font-weight: 400;
 }
+
+/* Contact Section Buttons Alignment */
+/* Adjust these styles as needed for your desired button layout */
+#contact .card-panel .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center buttons horizontally */
+    align-items: center; /* Vertically align them if they were different heights */
+}
+
+#contact .card-panel .row .col {
+    display: flex; /* Make column a flex container for its button */
+    justify-content: center; /* Center the button within its column */
+    margin-bottom: 15px; /* Add some space between buttons when stacked */
+}
+
+@media screen and (min-width: 601px) { /* Only apply on medium and larger screens */
+    #contact .card-panel .row .col {
+        margin-bottom: 0; /* Remove bottom margin when side-by-side */
+    }
+}
+
 
 /* Footer */
 footer.page-footer {
@@ -142,7 +180,8 @@ footer.page-footer .footer-copyright {
     .hero-section h5 {
         font-size: 1rem;
     }
-    .card-panel, .card {
+    /* Materialize already stacks columns on small screens, so these are less critical for stacking */
+    /* .card-panel, .card {
         margin-bottom: 20px;
-    }
+    } */
 }
