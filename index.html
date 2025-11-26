@@ -1,143 +1,148 @@
-import React from 'react';
-import { Mail, Briefcase, User, MapPin } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algarve Tech Helper | Profile & Services</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind to use the Inter font and enable transition on hover -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+        /* Custom hover effect for cards */
+        .card-hover {
+            transition: all 0.3s ease-in-out;
+        }
+        .card-hover:hover {
+            box-shadow: 0 10px 15px -3px rgba(52, 211, 235, 0.4), 0 4px 6px -2px rgba(52, 211, 235, 0.2);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased flex flex-col bg-gray-900">
 
-// Main component, must be the default export
-const App = () => {
-    // Custom colors defined as variables for readability in JSX (mimicking the original color intent)
-    const PRIMARY_ACCENT = 'text-blue-400'; // Brighter blue for dark mode
-    const SECONDARY_HIGHLIGHT = 'text-cyan-400'; // Bright cyan highlight
-    const BG_DARK_PRIMARY = 'bg-gray-900'; // Main dark background
-    const BG_DARK_CARD = 'bg-gray-800'; // Card background
-    const TEXT_LIGHT = 'text-gray-100'; // Main text color
-    const TEXT_SUBTLE = 'text-gray-400'; // Secondary text color
-
-    // Component for the "About Me" Card
-    const AboutCard = () => (
-        <section className={`md:col-span-1 ${BG_DARK_CARD} p-6 rounded-xl shadow-2xl border-t-4 border-cyan-400 transition-all duration-300 hover:shadow-cyan-400/30`}>
-            <h2 className={`text-2xl font-bold ${PRIMARY_ACCENT} mb-4 flex items-center`}>
-                <User className="w-6 h-6 mr-2" />
-                Who Am I?
-            </h2>
-            <ul className="space-y-3">
-                <li className={TEXT_LIGHT}>
-                    <strong className="font-semibold text-gray-200 flex items-center">
-                        <MapPin className="w-4 h-4 mr-2" /> Location:
-                    </strong>
-                    <span className={`ml-6 block sm:inline ${TEXT_SUBTLE}`}>From the beautiful Algarve, Portugal.</span>
-                </li>
-                <li className={TEXT_LIGHT}>
-                    <strong className="font-semibold text-gray-200">
-                        Age:
-                    </strong>
-                    <span className={`ml-2 block sm:inline ${TEXT_SUBTLE}`}>25 Years Old.</span>
-                </li>
-                <li className={TEXT_LIGHT}>
-                    <strong className="font-semibold text-gray-200">
-                        Hobbies:
-                    </strong>
-                    <span className={`ml-2 block sm:inline ${TEXT_SUBTLE}`}>I enjoy reading about history and, of course, practical tech projects!</span>
-                </li>
-            </ul>
-        </section>
-    );
-
-    // Component for the "Skills/Journey" Card
-    const JourneyCard = () => (
-        <section className={`md:col-span-2 ${BG_DARK_CARD} p-6 rounded-xl shadow-2xl border-t-4 border-blue-400 transition-all duration-300 hover:shadow-blue-400/30`}>
-            <h2 className={`text-2xl font-bold ${PRIMARY_ACCENT} mb-4 flex items-center`}>
-                <Briefcase className="w-6 h-6 mr-2" />
-                Current Focus: Server & Networking
-            </h2>
-            <p className={`${TEXT_SUBTLE} leading-relaxed`}>
-                I am actively on a learning journey, dedicating my time to improve my practical server and networking skills. This isn't just about reading books—it's about getting my hands dirty!
+    <!-- Header / Hero Section -->
+    <header class="bg-blue-900 text-white py-16 shadow-2xl shadow-blue-950/50">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight">
+                Olá! I'm Your Local Algarve Tech Helper.
+            </h1>
+            <p class="mt-4 text-xl sm:text-2xl font-light text-cyan-400">
+                Practical, budget-friendly web and networking assistance.
             </p>
-            <p className={`mt-3 leading-relaxed font-medium ${TEXT_LIGHT}`}>
-                I want to work on real-world scenarios to solidify my understanding of how the 'interwebs' really work, from the basics of routing to setting up simple web servers.
-            </p>
-        </section>
-    );
+        </div>
+    </header>
 
-    // Component for the "Services Offered" and "Pricing" Section
-    const ServicesSection = () => (
-        <section className={`md:col-span-3 ${BG_DARK_CARD} p-8 rounded-xl shadow-2xl border-t-4 border-cyan-400`}>
-            <h2 className={`text-3xl font-bold ${PRIMARY_ACCENT} mb-6 text-center flex items-center justify-center`}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7 mr-3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                How I Can Help You (Simplifying the Internet)
-            </h2>
+    <!-- Main Content Grid -->
+    <main class="container mx-auto px-4 py-12 flex-grow">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-            <p className={`text-center text-lg ${TEXT_SUBTLE} mb-8 max-w-2xl mx-auto`}>
-                Do you feel lost with simple technology tasks? I specialize in helping individuals and small businesses who don't have a big budget or technical knowledge.
-            </p>
+            <!-- About Me Card -->
+            <section class="md:col-span-1 bg-gray-800 p-6 rounded-xl shadow-2xl border-t-4 border-cyan-400 card-hover hover:shadow-cyan-400/30">
+                <h2 class="text-2xl font-bold text-blue-400 mb-4 flex items-center">
+                    <!-- User Icon SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    Who Am I?
+                </h2>
+                <ul class="space-y-3">
+                    <li class="text-gray-100">
+                        <strong class="font-semibold text-gray-200 flex items-center">
+                            <!-- MapPin Icon SVG -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Location:
+                        </strong>
+                        <span class="ml-6 block sm:inline text-gray-400">From the beautiful Algarve, Portugal.</span>
+                    </li>
+                    <li class="text-gray-100">
+                        <strong class="font-semibold text-gray-200">
+                            Age:
+                        </strong>
+                        <span class="ml-2 block sm:inline text-gray-400">25 Years Old.</span>
+                    </li>
+                    <li class="text-gray-100">
+                        <strong class="font-semibold text-gray-200">
+                            Hobbies:
+                        </strong>
+                        <span class="ml-2 block sm:inline text-gray-400">I enjoy reading about history and, of course, practical tech projects!</span>
+                    </li>
+                </ul>
+            </section>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div className="text-center p-4 bg-gray-900 rounded-lg shadow-inner shadow-gray-700/50 hover:bg-gray-700 transition duration-200 border border-gray-700">
-                    <span className={`text-3xl ${SECONDARY_HIGHLIGHT} font-bold block mb-2`}>1. Simple Website Setup</span>
-                    <p className={`text-sm ${TEXT_SUBTLE}`}>Get your first presence online with a basic, modern, and effective website.</p>
-                </div>
-                <div className="text-center p-4 bg-gray-900 rounded-lg shadow-inner shadow-gray-700/50 hover:bg-gray-700 transition duration-200 border border-gray-700">
-                    <span className={`text-3xl ${SECONDARY_HIGHLIGHT} font-bold block mb-2`}>2. Branded Email</span>
-                    <p className={`text-sm ${TEXT_SUBTLE}`}>Stop using Gmail! Get a professional email like <code className="bg-gray-700 p-1 rounded">you@yourname.com</code>.</p>
-                </div>
-                <div className="text-center p-4 bg-gray-900 rounded-lg shadow-inner shadow-gray-700/50 hover:bg-gray-700 transition duration-200 border border-gray-700">
-                    <span className={`text-3xl ${SECONDARY_HIGHLIGHT} font-bold block mb-2`}>3. Small Internet Tasks</span>
-                    <p className={`text-sm ${TEXT_SUBTLE}`}>Need DNS help? Domain setup? Basic hosting advice? I can guide you.</p>
-                </div>
-            </div>
-
-            {/* Commitment & Pricing */}
-            <div className={`mt-10 p-6 ${PRIMARY_ACCENT.replace('text', 'bg').replace('400', '950')} rounded-lg border border-blue-400/50`}>
-                <h3 className={`text-xl font-bold ${PRIMARY_ACCENT} mb-3`}>My Commitment & Pricing</h3>
-                <p className={`${TEXT_LIGHT} italic`}>
-                    As I am currently unemployed and on this practical learning journey, my fees are intentionally small. You are helping me gain vital hands-on experience, and I am helping you get online affordably.
+            <!-- Journey/Focus Card -->
+            <section class="md:col-span-2 bg-gray-800 p-6 rounded-xl shadow-2xl border-t-4 border-blue-400 card-hover hover:shadow-blue-400/30">
+                <h2 class="text-2xl font-bold text-blue-400 mb-4 flex items-center">
+                    <!-- Briefcase Icon SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-2"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    Current Focus: Server & Networking
+                </h2>
+                <p class="text-gray-400 leading-relaxed">
+                    I am actively on a learning journey, dedicating my time to improve my practical server and networking skills. This isn't just about reading books—it's about getting my hands dirty!
                 </p>
-                <p className={`mt-2 text-lg font-semibold text-red-400`}>
-                    <span className={PRIMARY_ACCENT}>Motto:</span> Practical experience over profit. Let's work together!
+                <p class="mt-3 leading-relaxed font-medium text-gray-100">
+                    I want to work on real-world scenarios to solidify my understanding of how the 'interwebs' really work, from the basics of routing to setting up simple web servers.
                 </p>
-            </div>
-        </section>
-    );
+            </section>
 
-    return (
-        <div className={`min-h-screen font-sans antialiased flex flex-col ${BG_DARK_PRIMARY}`}>
-            
-            {/* Header / Hero Section */}
-            <header className="bg-blue-900 text-white py-16 shadow-2xl shadow-blue-950/50">
-                <div className="container mx-auto px-4 text-center">
-                    <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight">
-                        Olá! I'm Your Local Algarve Tech Helper.
-                    </h1>
-                    <p className={`mt-4 text-xl sm:text-2xl font-light ${SECONDARY_HIGHLIGHT}`}>
-                        Practical, budget-friendly web and networking assistance.
+            <!-- Services Offered Section -->
+            <section class="md:col-span-3 bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-cyan-400">
+                <h2 class="text-3xl font-bold text-blue-400 mb-6 text-center flex items-center justify-center">
+                    <!-- Shield Icon SVG (Reused from original JSX) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 mr-3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    How I Can Help You (Simplifying the Internet)
+                </h2>
+
+                <p class="text-center text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
+                    Do you feel lost with simple technology tasks? I specialize in helping individuals and small businesses who don't have a big budget or technical knowledge.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div class="text-center p-4 bg-gray-900 rounded-lg shadow-inner shadow-gray-700/50 hover:bg-gray-700 transition duration-200 border border-gray-700">
+                        <span class="text-3xl text-cyan-400 font-bold block mb-2">1. Simple Website Setup</span>
+                        <p class="text-sm text-gray-400">Get your first presence online with a basic, modern, and effective website.</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-900 rounded-lg shadow-inner shadow-gray-700/50 hover:bg-gray-700 transition duration-200 border border-gray-700">
+                        <span class="text-3xl text-cyan-400 font-bold block mb-2">2. Branded Email</span>
+                        <p class="text-sm text-gray-400">Stop using Gmail! Get a professional email like <code class="bg-gray-700 p-1 rounded">you@yourname.com</code>.</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-900 rounded-lg shadow-inner shadow-gray-700/50 hover:bg-gray-700 transition duration-200 border border-gray-700">
+                        <span class="text-3xl text-cyan-400 font-bold block mb-2">3. Small Internet Tasks</span>
+                        <p class="text-sm text-gray-400">Need DNS help? Domain setup? Basic hosting advice? I can guide you.</p>
+                    </div>
+                </div>
+
+                <!-- Commitment & Pricing -->
+                <div class="mt-10 p-6 bg-blue-950 rounded-lg border border-blue-400/50">
+                    <h3 class="text-xl font-bold text-blue-400 mb-3">My Commitment & Pricing</h3>
+                    <p class="text-gray-100 italic">
+                        As I am currently unemployed and on this practical learning journey, my fees are intentionally small. You are helping me gain vital hands-on experience, and I am helping you get online affordably.
+                    </p>
+                    <p class="mt-2 text-lg font-semibold text-red-400">
+                        <span class="text-blue-400">Motto:</span> Practical experience over profit. Let's work together!
                     </p>
                 </div>
-            </header>
-
-            {/* Main Content Grid */}
-            <main className="container mx-auto px-4 py-12 flex-grow">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <AboutCard />
-                    <JourneyCard />
-                    <ServicesSection />
-                </div>
-
-                {/* Call to Action - Updated: No shadow, changed color to Indigo */}
-                <div className="mt-16 text-center">
-                    <a href="mailto:your.email@example.com" className={`inline-flex items-center px-10 py-5 bg-indigo-500 text-gray-900 text-xl font-extrabold rounded-full hover:bg-indigo-400 transition duration-300 transform hover:scale-105`}>
-                        <Mail className="w-6 h-6 mr-3 text-gray-900" />
-                        Get in Touch & Start Your Project
-                    </a>
-                </div>
-            </main>
-
-            {/* Footer */}
-            <footer className="bg-gray-950 text-white py-6 mt-16 border-t border-gray-800">
-                <div className="container mx-auto px-4 text-center text-sm">
-                    <p className={TEXT_SUBTLE}>&copy; 2025 Algarve Tech Helper. Based in the Algarve, focused on learning and growing.</p>
-                </div>
-            </footer>
-
+            </section>
         </div>
-    );
-};
 
-export default App;
+        <!-- Call to Action - Email Link -->
+        <div class="mt-16 text-center">
+            <a href="mailto:your.email@example.com" class="inline-flex items-center px-10 py-5 bg-indigo-500 text-gray-900 text-xl font-extrabold rounded-full hover:bg-indigo-400 transition duration-300 transform hover:scale-105 shadow-lg shadow-indigo-500/50">
+                <!-- Mail Icon SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-3 text-gray-900"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.83 1.83 0 0 1-2.06 0L2 7"/></svg>
+                Get in Touch & Start Your Project
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-white py-6 mt-16 border-t border-gray-800">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p class="text-gray-400">&copy; 2025 Algarve Tech Helper. Based in the Algarve, focused on learning and growing.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
