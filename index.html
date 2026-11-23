@@ -1,154 +1,1087 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vicente A. | Home Page</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configure Tailwind to use the Inter font and enable transition on hover -->
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.3s ease;
-        }
-        /* Custom hover effect for cards */
-        .card-hover {
-            transition: all 0.3s ease-in-out;
-        }
-        .card-hover:hover {
-            box-shadow: 0 10px 15px -3px rgba(52, 211, 235, 0.4), 0 4px 6px -2px rgba(52, 211, 235, 0.2);
-            transform: translateY(-2px);
-        }
-    </style>
-</head>
-<body class="min-h-screen antialiased flex flex-col bg-gray-900">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>~*~ WELCOME TO MY CYBERSPACE ~*~ [UNDER CONSTRUCTION]</title>
+  <!-- Load Tailwind CSS for responsive layout grid and spacing utilities -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Load Google Fonts: VT323 & Press Start 2P for authentic pixel/terminal typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
 
-    <!-- Header / Hero Section -->
-    <header class="bg-blue-900 text-white py-16 shadow-2xl shadow-blue-950/50">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight">
-                Olá! I'm Vicente welcome to my frontapge.
-            </h1>
-            <p class="mt-4 text-xl sm:text-2xl font-light text-cyan-400">
-                Practical, budget-friendly web and networking assistance.
-            </p>
+  <style>
+    /* ==========================================================================
+       1. RETRO DESIGN TOKENS & GLOBAL STARFIELD BACKGROUND
+       ========================================================================== */
+    :root {
+      --bg-deep: #090d16;
+      --bg-navy: #0f1925;
+      --win-gray: #c0c0c0;
+      --win-light: #ffffff;
+      --win-shadow: #808080;
+      --win-dark: #000000;
+      --win-blue-start: #000080;
+      --win-blue-end: #1084d0;
+      --neon-cyan: #00ffff;
+      --neon-lime: #39ff14;
+      --neon-yellow: #ffff00;
+      --neon-magenta: #ff00ff;
+      --amber-crt: #ffb000;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-deep);
+      color: #e2e8f0;
+      font-family: "Courier New", Courier, monospace;
+      /* Pure CSS Tiled Pixel Starfield Background */
+      background-image:
+        radial-gradient(1px 1px at 12px 18px, #ffffff 100%, transparent),
+        radial-gradient(1px 1px at 45px 62px, #00ffff 100%, transparent),
+        radial-gradient(2px 2px at 88px 25px, #ffff99 100%, transparent),
+        radial-gradient(1px 1px at 110px 95px, #ffffff 100%, transparent),
+        radial-gradient(1px 1px at 24px 115px, #ff66ff 100%, transparent),
+        radial-gradient(1px 1px at 72px 80px, #ffffff 100%, transparent),
+        linear-gradient(180deg, #090d16 0%, #0f1925 50%, #090d16 100%);
+      background-size: 130px 130px, 130px 130px, 130px 130px, 130px 130px, 130px 130px, 130px 130px, 100% 100%;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Classic Custom Retro Cursor Hint on Interactive Elements */
+    button, a, .retro-clickable {
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       2. CRT SCANLINE & PHOSPHOR GLOW OVERLAY (TOGGLEABLE)
+       ========================================================================== */
+    .crt-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      background:
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.32) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
+      background-size: 100% 3px, 6px 100%;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    body.crt-active .crt-overlay {
+      opacity: 1;
+    }
+
+    body.crt-active .crt-flicker {
+      animation: crtSubtleFlicker 0.15s infinite;
+    }
+
+    @keyframes crtSubtleFlicker {
+      0% { opacity: 0.99; }
+      50% { opacity: 1; }
+      100% { opacity: 0.985; }
+    }
+
+    /* ==========================================================================
+       3. WINDOWS 95 / 98 CLASSIC BEVELED UI CONTAINERS
+       ========================================================================== */
+    .win95-window {
+      background-color: var(--win-gray);
+      color: #000000;
+      border-top: 2px solid var(--win-light);
+      border-left: 2px solid var(--win-light);
+      border-right: 2px solid var(--win-dark);
+      border-bottom: 2px solid var(--win-dark);
+      box-shadow:
+        inset 1px 1px 0px #dfdfdf,
+        inset -1px -1px 0px var(--win-shadow),
+        4px 4px 0px rgba(0, 0, 0, 0.65);
+    }
+
+    .win95-titlebar {
+      background: linear-gradient(90deg, var(--win-blue-start) 0%, var(--win-blue-end) 100%);
+      color: #ffffff;
+      font-family: "MS Sans Serif", "Tahoma", "Courier New", sans-serif;
+      font-weight: bold;
+      font-size: 13px;
+      padding: 3px 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      letter-spacing: 0.3px;
+      user-select: none;
+    }
+
+    .win95-titlebar-inactive {
+      background: linear-gradient(90deg, #808080 0%, #b5b5b5 100%);
+    }
+
+    .win95-btn {
+      background-color: var(--win-gray);
+      color: #000000;
+      border-top: 2px solid var(--win-light);
+      border-left: 2px solid var(--win-light);
+      border-right: 2px solid var(--win-dark);
+      border-bottom: 2px solid var(--win-dark);
+      box-shadow: inset -1px -1px 0px var(--win-shadow);
+      font-family: "Courier New", Courier, monospace;
+      font-weight: bold;
+      active: outline;
+    }
+
+    .win95-btn:active {
+      border-top: 2px solid var(--win-dark);
+      border-left: 2px solid var(--win-dark);
+      border-right: 2px solid var(--win-light);
+      border-bottom: 2px solid var(--win-light);
+      box-shadow: none;
+      transform: translate(1px, 1px);
+    }
+
+    .win95-control-box {
+      width: 16px;
+      height: 14px;
+      background: var(--win-gray);
+      color: #000;
+      font-size: 10px;
+      line-height: 11px;
+      text-align: center;
+      border-top: 1px solid var(--win-light);
+      border-left: 1px solid var(--win-light);
+      border-right: 1px solid var(--win-dark);
+      border-bottom: 1px solid var(--win-dark);
+      font-weight: bold;
+    }
+
+    .win95-inset {
+      background-color: #070b14;
+      border-top: 2px solid var(--win-shadow);
+      border-left: 2px solid var(--win-shadow);
+      border-right: 2px solid var(--win-light);
+      border-bottom: 2px solid var(--win-light);
+      box-shadow: inset 1px 1px 0px #000000;
+    }
+
+    /* Classic Ridge / Groove HTML Table Borders */
+    .retro-ridge-box {
+      background-color: rgba(15, 25, 37, 0.92);
+      border: 4px ridge #5a7fa8;
+      box-shadow: 0 0 18px rgba(0, 255, 255, 0.14);
+    }
+
+    /* ==========================================================================
+       4. MARQUEE TICKER, HAZARD STRIPES & NEON BLINKING TEXT
+       ========================================================================== */
+    .marquee-bar {
+      background: #000033;
+      border-top: 2px ridge #00ffff;
+      border-bottom: 2px ridge #00ffff;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .marquee-track {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marqueeScroll 22s linear infinite;
+      font-family: "VT323", monospace;
+      font-size: 1.35rem;
+      color: var(--neon-yellow);
+      text-shadow: 0 0 6px rgba(255, 255, 0, 0.7);
+    }
+
+    .marquee-bar:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Animated Hazard Caution Stripes */
+    .hazard-stripe {
+      height: 16px;
+      background: repeating-linear-gradient(
+        -45deg,
+        #ffcc00,
+        #ffcc00 12px,
+        #111111 12px,
+        #111111 24px
+      );
+      border-top: 1px solid #000;
+      border-bottom: 1px solid #000;
+      animation: hazardSlide 1.2s linear infinite;
+      background-size: 34px 34px;
+    }
+
+    @keyframes hazardSlide {
+      0% { background-position: 0 0; }
+      100% { background-position: 34px 0; }
+    }
+
+    /* Authentic <blink> Tag Tribute */
+    .retro-blink {
+      animation: classicBlink 1.1s steps(2, start) infinite;
+    }
+
+    @keyframes classicBlink {
+      to { visibility: hidden; }
+    }
+
+    /* Rainbow Gradient Shimmer Title */
+    .rainbow-wordart {
+      font-family: "Press Start 2P", monospace;
+      background: linear-gradient(
+        90deg,
+        #ff3366,
+        #ffcc00,
+        #39ff14,
+        #00ffff,
+        #cc66ff,
+        #ff3366
+      );
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbowShift 4s linear infinite;
+      filter: drop-shadow(2px 2px 0px #000000);
+    }
+
+    @keyframes rainbowShift {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* ==========================================================================
+       5. PURE CSS 3D SPINNING WIREFRAME GLOBE & CYBER-CRYSTAL
+       ========================================================================== */
+    .globe-stage {
+      width: 112px;
+      height: 112px;
+      perspective: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .wireframe-globe {
+      width: 88px;
+      height: 88px;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: spinGlobe3D 9s linear infinite;
+    }
+
+    @keyframes spinGlobe3D {
+      0% { transform: rotateX(18deg) rotateY(0deg); }
+      100% { transform: rotateX(18deg) rotateY(360deg); }
+    }
+
+    .globe-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1.5px solid var(--neon-cyan);
+      box-shadow: 0 0 8px rgba(0, 255, 255, 0.45), inset 0 0 6px rgba(0, 255, 255, 0.25);
+    }
+
+    /* Longitude rings */
+    .globe-ring.lon-1 { transform: rotateY(0deg); }
+    .globe-ring.lon-2 { transform: rotateY(45deg); }
+    .globe-ring.lon-3 { transform: rotateY(90deg); }
+    .globe-ring.lon-4 { transform: rotateY(135deg); }
+
+    /* Equator & Latitude rings */
+    .globe-ring.lat-eq {
+      transform: rotateX(90deg);
+      border-color: var(--neon-lime);
+      box-shadow: 0 0 8px rgba(57, 255, 20, 0.6);
+    }
+    .globe-ring.lat-top {
+      transform: rotateX(90deg) translateZ(26px) scale(0.78);
+      border-color: rgba(0, 255, 255, 0.75);
+    }
+    .globe-ring.lat-bot {
+      transform: rotateX(90deg) translateZ(-26px) scale(0.78);
+      border-color: rgba(0, 255, 255, 0.75);
+    }
+
+    /* ==========================================================================
+       6. LCD HIT COUNTER DIGITS
+       ========================================================================== */
+    .lcd-counter-housing {
+      background: #111111;
+      border: 3px inset #666666;
+      padding: 4px 6px;
+      display: inline-flex;
+      gap: 3px;
+      box-shadow: inset 0 0 10px #000000;
+    }
+
+    .lcd-digit {
+      background: linear-gradient(180deg, #071907 0%, #0d2b0d 50%, #051205 100%);
+      border: 1px solid #1f4d1f;
+      color: var(--neon-lime);
+      font-family: "VT323", monospace;
+      font-size: 1.65rem;
+      line-height: 1;
+      padding: 2px 5px;
+      text-shadow: 0 0 6px var(--neon-lime);
+      min-width: 20px;
+      text-align: center;
+    }
+
+    /* ==========================================================================
+       7. AUTHENTIC 88x31 RETRO WEB BADGES (PURE CSS PIXEL ART)
+       ========================================================================== */
+    .badge-88x31 {
+      width: 88px;
+      height: 31px;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: "VT323", monospace;
+      font-size: 11px;
+      line-height: 1.05;
+      text-align: center;
+      text-decoration: none;
+      border-top: 2px solid #ffffff;
+      border-left: 2px solid #ffffff;
+      border-right: 2px solid #333333;
+      border-bottom: 2px solid #333333;
+      user-select: none;
+      transition: transform 0.1s steps(2);
+      overflow: hidden;
+      padding: 1px 2px;
+    }
+
+    .badge-88x31:hover {
+      transform: scale(1.06);
+      filter: brightness(1.15);
+    }
+
+    .badge-netscape {
+      background: linear-gradient(180deg, #004d4d 0%, #008080 50%, #003333 100%);
+      color: #ffffff;
+      text-shadow: 1px 1px 0 #000;
+    }
+
+    .badge-html {
+      background: linear-gradient(90deg, #800000 0%, #cc3300 100%);
+      color: #ffff99;
+      text-shadow: 1px 1px 0 #000;
+    }
+
+    .badge-selfhosted {
+      background: #000000;
+      color: #39ff14;
+      border-color: #39ff14 #005500 #005500 #39ff14;
+    }
+
+    .badge-nocookies {
+      background: linear-gradient(180deg, #2b1b54 0%, #4c2a85 100%);
+      color: #00ffff;
+      text-shadow: 1px 1px 0 #000;
+    }
+
+    .badge-notepad {
+      background: linear-gradient(180deg, #e6e6e6 0%, #b3c6ff 100%);
+      color: #000066;
+      font-weight: bold;
+    }
+
+    .badge-y2k {
+      background: linear-gradient(90deg, #ff00cc, #3333ff);
+      color: #ffff00;
+      text-shadow: 1px 1px 0 #000;
+    }
+
+    /* Blinking Terminal Cursor */
+    .term-cursor {
+      display: inline-block;
+      width: 9px;
+      height: 15px;
+      background-color: var(--neon-lime);
+      vertical-align: middle;
+      animation: classicBlink 0.9s steps(2, start) infinite;
+    }
+
+    /* Custom Scrollbar for Mini Guestbook */
+    .retro-scroll::-webkit-scrollbar {
+      width: 14px;
+    }
+    .retro-scroll::-webkit-scrollbar-track {
+      background: #dfdfdf;
+      border-left: 1px solid #808080;
+    }
+    .retro-scroll::-webkit-scrollbar-thumb {
+      background: #c0c0c0;
+      border-top: 2px solid #ffffff;
+      border-left: 2px solid #ffffff;
+      border-right: 2px solid #000000;
+      border-bottom: 2px solid #000000;
+    }
+  </style>
+</head>
+
+<body class="crt-active">
+  <!-- CRT Scanline Overlay Layer -->
+  <div class="crt-overlay" aria-hidden="true"></div>
+
+  <!-- ========================================================================
+       TOP MARQUEE NEWS TICKER
+       ======================================================================== -->
+  <div class="marquee-bar py-1 select-none" role="region" aria-label="Site Status Ticker">
+    <div class="marquee-track">
+      ★ WELCOME TO <span class="domain-placeholder font-bold text-cyan-300">YOURDOMAIN.COM</span> ★ &nbsp;&nbsp;
+      [SYSTEM NOTICE]: SERVER RACK ONLINE &amp; HUMMING AT 100% CAPACITY &nbsp;&nbsp; +++ &nbsp;&nbsp;
+      THIS CORNER OF CYBERSPACE IS CURRENTLY UNDER HEAVY CONSTRUCTION — GRAB A HARD HAT &amp; BOOKMARK THIS PAGE! &nbsp;&nbsp; +++ &nbsp;&nbsp;
+      OPTIMIZED FOR 800x600 &amp; 1024x768 CRT MONITORS &nbsp;&nbsp; +++ &nbsp;&nbsp;
+      NO TRACKERS • NO BLOAT • PURE HAND-CODED HTML/CSS &nbsp;&nbsp; ★
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MAIN CENTERED RETRO PORTAL CONTAINER
+       ======================================================================== -->
+  <div class="crt-flicker max-w-4xl mx-auto px-3 sm:px-6 py-6 sm:py-8">
+
+    <!-- TOP CONTROL STRIP: RETRO UTILITY BUTTONS -->
+    <div class="flex flex-wrap items-center justify-between gap-2 mb-4 text-xs">
+      <div class="flex items-center gap-2 bg-black/70 border border-cyan-500/50 px-2.5 py-1 text-cyan-300">
+        <span class="inline-block w-2 h-2 bg-green-400 rounded-full animate-ping"></span>
+        <span>NODE: <strong class="text-yellow-300">ONLINE</strong></span>
+        <span class="text-slate-500">|</span>
+        <span id="retro-clock">1999-12-31 23:59:59</span>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2">
+        <button id="crt-toggle-btn" type="button" class="win95-btn px-2.5 py-1 text-xs flex items-center gap-1.5" title="Toggle CRT Scanline Filter">
+          <span>📺</span>
+          <span>CRT SCANLINES: <span id="crt-status-label" class="text-blue-800">ON</span></span>
+        </button>
+        <button id="synth-toggle-btn" type="button" class="win95-btn px-2.5 py-1 text-xs flex items-center gap-1.5" title="Play/Stop 8-bit Ambient Chiptune">
+          <span>🔊</span>
+          <span>MIDI BEEP: <span id="synth-status-label" class="text-red-800">OFF</span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         HERO BANNER: WINDOWS 95 MAIN PORTAL WINDOW
+         ====================================================================== -->
+    <header class="win95-window mb-6">
+      <div class="win95-titlebar">
+        <div class="flex items-center gap-2">
+          <!-- Tiny CSS Pixel Computer Icon -->
+          <span class="inline-block w-3.5 h-3 bg-cyan-300 border border-black shadow-inner"></span>
+          <span>C:\INETPUB\WWWROOT\<span class="domain-placeholder uppercase">YOURDOMAIN.COM</span>\INDEX.HTM</span>
         </div>
+        <div class="flex items-center gap-1">
+          <span class="win95-control-box">_</span>
+          <span class="win95-control-box">□</span>
+          <span class="win95-control-box">×</span>
+        </div>
+      </div>
+
+      <!-- Hazard Tape Top Border -->
+      <div class="hazard-stripe"></div>
+
+      <div class="p-4 sm:p-6 bg-[#0b1320] text-center relative overflow-hidden">
+        <!-- Corner Sparkle Decorations -->
+        <div class="hidden sm:block absolute top-3 left-4 text-yellow-300 text-xl select-none animate-pulse">✦ ✧ ★</div>
+        <div class="hidden sm:block absolute top-3 right-4 text-cyan-300 text-xl select-none animate-pulse">★ ✧ ✦</div>
+
+        <!-- Blinking Under Construction Pill -->
+        <div class="inline-block bg-yellow-300 text-black font-bold px-3 py-0.5 border-2 border-black text-xs sm:text-sm tracking-widest mb-3 shadow-[3px_3px_0px_#ff0055]">
+          <span class="retro-blink">🚧 ATTENTION NETIZENS: SITE UNDER CONSTRUCTION 🚧</span>
+        </div>
+
+        <!-- ================================================================
+             EDIT YOUR DOMAIN NAME RIGHT BELOW!
+             ================================================================ -->
+        <h1 class="rainbow-wordart text-xl sm:text-3xl md:text-4xl leading-relaxed tracking-wider my-2 break-words">
+          <span class="domain-placeholder">YOURDOMAIN.COM</span>
+        </h1>
+
+        <p class="text-cyan-300 text-sm sm:text-base max-w-xl mx-auto mt-2 leading-relaxed">
+          &lt;~*~ Welcome to my digital homestead on the World Wide Web! ~*~&gt;<br />
+          <span class="text-slate-300 text-xs sm:text-sm">
+            The servers are racked, the DNS has propagated, and the pixels are currently being hand-laid.
+          </span>
+        </p>
+
+        <!-- Centerpiece: Spinning 3D Wireframe Globe + Construction Notice -->
+        <div class="mt-5 flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8 bg-black/50 border border-slate-700/80 p-4 max-w-2xl mx-auto">
+          <!-- Pure CSS 3D Spinning Wireframe Globe -->
+          <div class="flex flex-col items-center">
+            <div class="globe-stage" aria-label="Spinning 3D Wireframe Cyber Globe">
+              <div class="wireframe-globe">
+                <div class="globe-ring lon-1"></div>
+                <div class="globe-ring lon-2"></div>
+                <div class="globe-ring lon-3"></div>
+                <div class="globe-ring lon-4"></div>
+                <div class="globe-ring lat-eq"></div>
+                <div class="globe-ring lat-top"></div>
+                <div class="globe-ring lat-bot"></div>
+              </div>
+            </div>
+            <span class="text-[11px] text-cyan-400 tracking-widest mt-1">[ CYBERSPACE LINK ]</span>
+          </div>
+
+          <!-- Status Details Table -->
+          <div class="text-left text-xs sm:text-sm space-y-2 flex-1">
+            <div class="border-b border-dashed border-slate-600 pb-1.5">
+              <span class="text-yellow-300 font-bold">STATUS:</span>
+              <span class="text-lime-400 font-bold ml-1">DOMAIN PARKED &amp; ACTIVE</span>
+            </div>
+            <div class="border-b border-dashed border-slate-600 pb-1.5">
+              <span class="text-yellow-300 font-bold">WEBMASTER:</span>
+              <span class="text-slate-200 ml-1">sysadmin@<span class="domain-placeholder lowercase">yourdomain.com</span></span>
+            </div>
+            <div class="border-b border-dashed border-slate-600 pb-1.5">
+              <span class="text-yellow-300 font-bold">PROGRESS:</span>
+              <!-- Retro Segmented Progress Bar -->
+              <div class="mt-1 w-full bg-slate-900 border border-slate-500 p-0.5">
+                <div class="h-3 bg-gradient-to-r from-blue-600 via-cyan-400 to-lime-400 w-[42%] flex items-center justify-end pr-1">
+                  <span class="text-[9px] font-bold text-black">42%</span>
+                </div>
+              </div>
+            </div>
+            <div class="text-xs text-slate-400 pt-0.5">
+              Last updated: <span class="text-cyan-300">Just now via FTP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hazard Tape Bottom Border -->
+      <div class="hazard-stripe"></div>
     </header>
 
-    <!-- Main Content Grid -->
-    <main class="container mx-auto px-4 py-12 flex-grow">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- ======================================================================
+         MAIN 2-COLUMN RETRO TABLE / GRID LAYOUT
+         ====================================================================== -->
+    <main class="grid grid-cols-1 md:grid-cols-12 gap-5 mb-6">
 
-            <!-- About Me Card -->
-            <section class="md:col-span-1 bg-gray-800 p-6 rounded-xl shadow-2xl border-t-4 border-cyan-400 card-hover hover:shadow-cyan-400/30">
-                <h2 class="text-2xl font-bold text-blue-400 mb-4 flex items-center">
-                    <!-- User Icon SVG -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    Who Am I?
-                </h2>
-                <ul class="space-y-3">
-                    <li class="text-gray-100">
-                        <strong class="font-semibold text-gray-200 flex items-center">
-                            <!-- MapPin Icon SVG -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                            Location:
-                        </strong>
-                        <span class="ml-6 block sm:inline text-gray-400">From the south of Portugal.</span>
-                    </li>
-                    <li class="text-gray-100">
-                        <strong class="font-semibold text-gray-200">
-                            Age:
-                        </strong>
-                        <span class="ml-2 block sm:inline text-gray-400">22 Years Old.</span>
-                    </li>
-                    <li class="text-gray-100">
-                        <strong class="font-semibold text-gray-200">
-                            Hobbies:
-                        </strong>
-                        <span class="ml-2 block sm:inline text-gray-400">I enjoy airsoft, gaming, computer technology and cartoons!</span>
-                    </li>
-                    <li class="text-gray-100">
-                        <strong class="font-semibold text-gray-200">
-                            Links:
-                        </strong>
-                        <span class="ml-2 block sm:inline text-gray-400">https://linksta.cc/@zoe8338</span>
-                    </li>
-                </ul>
-            </section>
+      <!-- LEFT COLUMN (7 cols): SYSTEM STATUS TERMINAL & INTERACTIVE CONSOLE -->
+      <section class="md:col-span-7 flex flex-col gap-5">
+        <div class="win95-window flex-1 flex flex-col">
+          <div class="win95-titlebar">
+            <div class="flex items-center gap-1.5">
+              <span class="text-yellow-300">■</span>
+              <span>SYSTEM_STATUS.EXE — Coming Soon Log</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <span class="win95-control-box">?</span>
+              <span class="win95-control-box">×</span>
+            </div>
+          </div>
 
-            <!-- Journey/Focus Card -->
-            <section class="md:col-span-2 bg-gray-800 p-6 rounded-xl shadow-2xl border-t-4 border-blue-400 card-hover hover:shadow-blue-400/30">
-                <h2 class="text-2xl font-bold text-blue-400 mb-4 flex items-center">
-                    <!-- Briefcase Icon SVG -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-2"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                    Current Focus: Server & Networking
-                </h2>
-                <p class="text-gray-400 leading-relaxed">
-                    I am actively on a learning journey, dedicating my time to improve my practical server and networking skills. This isn't just about reading books—it's about getting my hands dirty!
-                </p>
-                <p class="mt-3 leading-relaxed font-medium text-gray-100">
-                    I want to work on real-world scenarios to solidify my understanding of how the 'interwebs' really work, from the basics of routing to setting up simple web servers.
-                </p>
-            </section>
+          <div class="p-3 flex-1 flex flex-col">
+            <!-- Inset CRT Terminal Screen -->
+            <div id="terminal-output" class="win95-inset p-3 font-['VT323'] text-lg leading-snug text-lime-400 h-60 overflow-y-auto retro-scroll space-y-1.5">
+              <div class="text-cyan-300">BIOS Date 01/01/99 14:22:51 Ver: 08.00.15</div>
+              <div class="text-slate-300">Initializing TCP/IP stack for <span class="domain-placeholder text-yellow-300">YOURDOMAIN.COM</span>... [OK]</div>
+              <div>&gt; Mounting /dev/homepage ... DONE</div>
+              <div>&gt; Checking HTML 3.2 / CSS compliance ... PASSED</div>
+              <div class="text-yellow-300">&gt; NOTICE: Main content modules are still compiling in the lab.</div>
+              <div>&gt; Type <span class="text-white underline">help</span>, <span class="text-white underline">status</span>, <span class="text-white underline">ping</span>, or <span class="text-white underline">matrix</span> below!</div>
+              <div id="terminal-history"></div>
+              <div>
+                <span class="text-cyan-400">guest@cyberspace:~$</span> <span class="term-cursor"></span>
+              </div>
+            </div>
 
-            <!-- Services Offered Section -->
-            <section class="md:col-span-3 bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-cyan-400">
-                <h2 class="text-3xl font-bold text-blue-400 mb-6 text-center flex items-center justify-center">
-                    <!-- Shield Icon SVG (Reused from original JSX) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 mr-3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    How I Can Help You (Simplifying the Internet)
-                </h2>
-
-                <p class="text-center text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-                    Do you feel lost with simple technology tasks? I to help individuals and small businesses who don't have a big budget or technical knowledge.
-                </p>
-
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <div class="text-center p-4 bg-gray-900 rounded-lg shadow-inner shadow-gray-700/50 hover:bg-gray-700 transition duration-200 border border-gray-700">
-                        <span class="text-3xl text-cyan-400 font-bold block mb-2">1. Simple Website Setup</span>
-                        <p class="text-sm text-gray-400">Get your first presence online with a website. It being a small blog, wordpress site or a static page showcasing your content.</p>
-                    </div>
-                    <div class="text-center p-4 bg-gray-900 rounded-lg shadow-inner shadow-gray-700/50 hover:bg-gray-700 transition duration-200 border border-gray-700">
-                        <span class="text-3xl text-cyan-400 font-bold block mb-2">2. Branded Email</span>
-                        <p class="text-sm text-gray-400">Stop using Gmail! Get a professional email like <code class="bg-gray-700 p-1 rounded">you@yourname.com</code>.</p>
-                    </div>
-                    <div class="text-center p-4 bg-gray-900 rounded-lg shadow-inner shadow-gray-700/50 hover:bg-gray-700 transition duration-200 border border-gray-700">
-                        <span class="text-3xl text-cyan-400 font-bold block mb-2">3. Small Internet Tasks</span>
-                        <p class="text-sm text-gray-400">Need DNS help? Domain setup? Basic hosting advice? I can guide you.</p>
-                    </div>
-                </div>
-
-                <!-- Commitment & Pricing -->
-                <div class="mt-10 p-6 bg-blue-950 rounded-lg border border-blue-400/50">
-                    <h3 class="text-xl font-bold text-blue-400 mb-3">My Commitment & Pricing</h3>
-                    <p class="text-gray-100 italic">
-                        As I am currently unemployed and on this practical learning journey, my fees are intentionally small. You are helping me gain vital hands-on experience, and I am helping you get online affordably.
-                    </p>
-                    <p class="mt-2 text-lg font-semibold text-red-400">
-                        <span class="text-blue-400">Motto:</span> Practical experience over profit. Let's work together!
-                    </p>
-                </div>
-            </section>
+            <!-- Interactive Terminal Command Input -->
+            <form id="terminal-form" class="mt-2.5 flex gap-2">
+              <input
+                id="terminal-input"
+                type="text"
+                autocomplete="off"
+                placeholder="Enter command (e.g. help, ping, status)..."
+                class="flex-1 bg-white text-black px-2.5 py-1 text-xs sm:text-sm border-2 border-t-gray-700 border-l-gray-700 border-r-white border-b-white focus:outline-none font-mono"
+              />
+              <button type="submit" class="win95-btn px-3 py-1 text-xs sm:text-sm">
+                RUN
+              </button>
+            </form>
+          </div>
         </div>
 
-        <!-- Call to Action - Email Link -->
-        <div class="mt-16 text-center">
-            <a href="mailto:contact@unifiedberets.com" class="inline-flex items-center px-10 py-5 bg-indigo-500 text-gray-900 text-xl font-extrabold rounded-full hover:bg-indigo-400 transition duration-300 transform hover:scale-105 shadow-lg shadow-indigo-500/50">
-                <!-- Mail Icon SVG -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-3 text-gray-900"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.83 1.83 0 0 1-2.06 0L2 7"/></svg>
-                Get in Touch & Start Your Project
-            </a>
+        <!-- MINI RETRO GUESTBOOK / SHOUTBOX -->
+        <div class="win95-window">
+          <div class="win95-titlebar">
+            <div class="flex items-center gap-1.5">
+              <span>📖</span>
+              <span>SIGN_MY_GUESTBOOK.CGI</span>
+            </div>
+            <span class="text-[11px] bg-black/40 px-1.5">v1.4</span>
+          </div>
+          <div class="p-3 bg-[#d4d0c8] text-black text-xs">
+            <p class="mb-2 font-bold text-blue-900">
+              Leave a quick transmission before you surf away!
+            </p>
+            <form id="guestbook-form" class="flex flex-col sm:flex-row gap-2 mb-3">
+              <input
+                id="gb-name"
+                type="text"
+                maxlength="18"
+                placeholder="Handle (e.g. CyberSurfer99)"
+                class="sm:w-1/3 bg-white px-2 py-1 border-2 border-t-gray-700 border-l-gray-700 border-r-white border-b-white focus:outline-none"
+                required
+              />
+              <input
+                id="gb-msg"
+                type="text"
+                maxlength="70"
+                placeholder="Cool site!! Can't wait for launch..."
+                class="flex-1 bg-white px-2 py-1 border-2 border-t-gray-700 border-l-gray-700 border-r-white border-b-white focus:outline-none"
+                required
+              />
+              <button type="submit" class="win95-btn px-3 py-1 whitespace-nowrap">
+                POST MSG
+              </button>
+            </form>
+
+            <!-- Guestbook Entries Box -->
+            <div id="guestbook-entries" class="bg-white border-2 border-t-gray-700 border-l-gray-700 border-r-white border-b-white p-2 max-h-28 overflow-y-auto retro-scroll space-y-1.5">
+              <div class="border-b border-dotted border-gray-400 pb-1">
+                <span class="font-bold text-blue-800">[WebMaster]</span>:
+                <span>First post! Domain successfully pointed here. Stay tuned!</span>
+              </div>
+              <div class="border-b border-dotted border-gray-400 pb-1">
+                <span class="font-bold text-purple-800">[NetRunner_01]</span>:
+                <span>Love the spinning wireframe globe!! Bookmarked ★</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
+
+      <!-- RIGHT COLUMN (5 cols): VISITOR COUNTER, DIRECTORY & 88x31 BADGES -->
+      <aside class="md:col-span-5 flex flex-col gap-5">
+
+        <!-- VISITOR HIT COUNTER WINDOW -->
+        <div class="win95-window">
+          <div class="win95-titlebar">
+            <span>👁️ HIT_COUNTER.DLL</span>
+            <span class="win95-control-box">×</span>
+          </div>
+          <div class="p-4 text-center bg-[#c0c0c0]">
+            <p class="text-xs font-bold uppercase tracking-wider text-gray-800 mb-2">
+              You Are Cyber-Visitor Number:
+            </p>
+
+            <!-- LCD Digits Display -->
+            <div id="hit-counter" class="lcd-counter-housing mb-2" aria-label="Visitor Counter">
+              <span class="lcd-digit">0</span>
+              <span class="lcd-digit">0</span>
+              <span class="lcd-digit">4</span>
+              <span class="lcd-digit">8</span>
+              <span class="lcd-digit">1</span>
+              <span class="lcd-digit">5</span>
+            </div>
+
+            <div class="mt-1">
+              <button id="bump-counter-btn" type="button" class="win95-btn px-2.5 py-0.5 text-[11px]">
+                + Refresh Hit Counter
+              </button>
+            </div>
+            <p class="text-[11px] text-gray-700 mt-2">
+              Since <span class="font-bold">01/01/1999</span> • Zero Cookies Used
+            </p>
+          </div>
+        </div>
+
+        <!-- WHAT'S COMING SOON CHECKLIST -->
+        <div class="retro-ridge-box p-4">
+          <h2 class="font-['Press_Start_2P'] text-xs text-yellow-300 mb-3 flex items-center gap-2">
+            <span>📂</span>
+            <span>SITE ROADMAP</span>
+          </h2>
+          <ul class="space-y-2 text-xs sm:text-sm">
+            <li class="flex items-start gap-2">
+              <span class="text-lime-400 font-bold">[✔]</span>
+              <span class="text-slate-200">Register &amp; configure domain DNS</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-lime-400 font-bold">[✔]</span>
+              <span class="text-slate-200">Deploy retro placeholder beacon</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-yellow-300 font-bold retro-blink">[►]</span>
+              <span class="text-cyan-300">Building main pages &amp; cool projects</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-slate-500 font-bold">[ ]</span>
+              <span class="text-slate-400">Open public launch &amp; WebRing join</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CLASSIC 88x31 BUTTONS & PIXEL BADGES WALL -->
+        <div class="win95-window">
+          <div class="win95-titlebar">
+            <span>🏅 88x31_BADGES.GIF</span>
+            <span class="win95-control-box">×</span>
+          </div>
+          <div class="p-3 bg-[#101827] text-center">
+            <p class="text-[11px] text-cyan-300 mb-2.5">
+              ~ Certified Old-School Web Standards ~
+            </p>
+            <div class="flex flex-wrap justify-center gap-2">
+              <!-- Netscape Navigator Badge -->
+              <div class="badge-88x31 badge-netscape" title="Best Viewed in Netscape Navigator 4.0+">
+                <span class="text-[9px] text-cyan-200">BEST VIEWED IN</span>
+                <span class="font-bold text-xs tracking-wide">NETSCAPE N</span>
+              </div>
+
+              <!-- Made with HTML & CSS Badge -->
+              <div class="badge-88x31 badge-html" title="Hand-coded with pure HTML & CSS">
+                <span class="text-[9px]">HAND-CODED</span>
+                <span class="font-bold text-xs">HTML &amp; CSS</span>
+              </div>
+
+              <!-- Self-Hosted Badge -->
+              <div class="badge-88x31 badge-selfhosted" title="100% Self-Hosted Iron">
+                <span class="text-[9px] text-white">[ SERVER ]</span>
+                <span class="font-bold text-xs">SELF-HOSTED</span>
+              </div>
+
+              <!-- No Cookies Badge -->
+              <div class="badge-88x31 badge-nocookies" title="Zero Tracking Cookies">
+                <span class="text-[9px] text-pink-300">100% PRIVACY</span>
+                <span class="font-bold text-xs">NO COOKIES</span>
+              </div>
+
+              <!-- Built in Notepad Badge -->
+              <div class="badge-88x31 badge-notepad" title="Crafted in a Plain Text Editor">
+                <span class="text-[9px]">MADE WITH</span>
+                <span class="font-bold text-xs">NOTEPAD.EXE</span>
+              </div>
+
+              <!-- Y2K Compliant Badge -->
+              <div class="badge-88x31 badge-y2k" title="Certified Y2K Ready">
+                <span class="text-[9px] text-white">CERTIFIED</span>
+                <span class="font-bold text-xs">Y2K READY!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </aside>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-950 text-white py-6 mt-16 border-t border-gray-800">
-        <div class="container mx-auto px-4 text-center text-sm">
-            <p class="text-gray-400">&copy; 2025 Algarve Tech Helper. Based in the Algarve, focused on learning and growing.</p>
-        </div>
+    <!-- ======================================================================
+         CLASSIC WEBRING & FOOTER NAVIGATION BAR
+         ====================================================================== -->
+    <footer class="retro-ridge-box p-4 text-center text-xs space-y-3">
+      <!-- Retro WebRing Box -->
+      <div class="inline-flex flex-wrap items-center justify-center gap-3 bg-black/70 border border-cyan-500/60 px-4 py-2">
+        <button type="button" onclick="triggerWebRing('prev')" class="text-cyan-300 hover:text-yellow-300 underline font-bold">
+          &lt;&lt; [PREV SITE]
+        </button>
+        <span class="text-yellow-300 font-bold tracking-wider">
+          🌐 THE INDIE CYBERSPACE WEBRING 🌐
+        </span>
+        <button type="button" onclick="triggerWebRing('random')" class="text-lime-400 hover:text-yellow-300 underline font-bold">
+          [RANDOM]
+        </button>
+        <button type="button" onclick="triggerWebRing('next')" class="text-cyan-300 hover:text-yellow-300 underline font-bold">
+          [NEXT SITE] &gt;&gt;
+        </button>
+      </div>
+
+      <!-- Toast Message Area for WebRing / Notifications (No alert() used!) -->
+      <div id="retro-toast" class="hidden text-yellow-300 bg-blue-950/90 border border-yellow-400 px-3 py-1 max-w-md mx-auto"></div>
+
+      <div class="text-slate-400 pt-1">
+        © 1999–2026 <span class="domain-placeholder text-cyan-300 font-bold">YOURDOMAIN.COM</span> • All Rights Reserved.<br />
+        <span class="text-[11px] text-slate-500">
+          Tip: Edit the <code class="text-slate-300">SITE_CONFIG</code> object in the HTML source to customize your domain name!
+        </span>
+      </div>
     </footer>
 
+  </div>
+
+  <!-- ========================================================================
+       MINIMAL VANILLA JAVASCRIPT FOR RETRO INTERACTIVITY
+       ======================================================================== -->
+  <script>
+    /**
+     * ========================================================================
+     * EASY CONFIGURATION: Change your domain name once here and it updates
+     * everywhere on the page automatically!
+     * ========================================================================
+     */
+    const SITE_CONFIG = {
+      domainName: "YOURDOMAIN.COM",
+      baseVisitorCount: 4815
+    };
+
+    // Apply domain name across all placeholder spans & document title
+    function applyDomainConfig() {
+      const elements = document.querySelectorAll(".domain-placeholder");
+      elements.forEach((el) => {
+        if (el.classList.contains("lowercase")) {
+          el.textContent = SITE_CONFIG.domainName.toLowerCase();
+        } else {
+          el.textContent = SITE_CONFIG.domainName.toUpperCase();
+        }
+      });
+      document.title = `~*~ ${SITE_CONFIG.domainName.toUpperCase()} ~*~ [UNDER CONSTRUCTION]`;
+    }
+
+    // ------------------------------------------------------------------------
+    // 1. LIVE RETRO CLOCK
+    // ------------------------------------------------------------------------
+    function updateRetroClock() {
+      const clockEl = document.getElementById("retro-clock");
+      if (!clockEl) return;
+      const now = new Date();
+      const pad = (n) => String(n).padStart(2, "0");
+      const formatted = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+      clockEl.textContent = formatted;
+    }
+
+    // ------------------------------------------------------------------------
+    // 2. FAKE LCD VISITOR HIT COUNTER (Persists in localStorage)
+    // ------------------------------------------------------------------------
+    let currentHits = SITE_CONFIG.baseVisitorCount;
+
+    function initHitCounter() {
+      try {
+        const saved = localStorage.getItem("retro_hit_counter_v1");
+        if (saved && !isNaN(parseInt(saved, 10))) {
+          currentHits = parseInt(saved, 10) + 1;
+        } else {
+          currentHits = SITE_CONFIG.baseVisitorCount + Math.floor(Math.random() * 42);
+        }
+        localStorage.setItem("retro_hit_counter_v1", String(currentHits));
+      } catch (e) {
+        currentHits = SITE_CONFIG.baseVisitorCount + 1;
+      }
+      renderHitCounter(currentHits);
+    }
+
+    function renderHitCounter(num) {
+      const container = document.getElementById("hit-counter");
+      if (!container) return;
+      const padded = String(num).padStart(6, "0").slice(-6);
+      container.innerHTML = padded
+        .split("")
+        .map((digit) => `<span class="lcd-digit">${digit}</span>`)
+        .join("");
+    }
+
+    // ------------------------------------------------------------------------
+    // 3. CRT SCANLINE OVERLAY TOGGLE
+    // ------------------------------------------------------------------------
+    function setupCrtToggle() {
+      const btn = document.getElementById("crt-toggle-btn");
+      const label = document.getElementById("crt-status-label");
+      btn.addEventListener("click", () => {
+        const isActive = document.body.classList.toggle("crt-active");
+        label.textContent = isActive ? "ON" : "OFF";
+        label.className = isActive ? "text-blue-800" : "text-red-800";
+        playRetroBeep(isActive ? 660 : 330, 0.06);
+      });
+    }
+
+    // ------------------------------------------------------------------------
+    // 4. OPTIONAL 8-BIT SYNTH / PC SPEAKER BEEP (Web Audio API - Zero External Files)
+    // ------------------------------------------------------------------------
+    let audioCtx = null;
+    let synthLoopInterval = null;
+    let synthEnabled = false;
+
+    function playRetroBeep(freq = 440, duration = 0.08) {
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === "suspended") {
+          audioCtx.resume();
+        }
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "square";
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (err) {
+        // Ignore audio errors if browser blocks autoplay
+      }
+    }
+
+    function setupSynthToggle() {
+      const btn = document.getElementById("synth-toggle-btn");
+      const label = document.getElementById("synth-status-label");
+      const notes = [261.63, 329.63, 392.0, 523.25, 392.0, 329.63, 293.66, 392.0];
+      let step = 0;
+
+      btn.addEventListener("click", () => {
+        synthEnabled = !synthEnabled;
+        if (synthEnabled) {
+          label.textContent = "ON";
+          label.className = "text-green-800";
+          playRetroBeep(notes[0], 0.12);
+          synthLoopInterval = setInterval(() => {
+            step = (step + 1) % notes.length;
+            playRetroBeep(notes[step], 0.12);
+          }, 320);
+        } else {
+          label.textContent = "OFF";
+          label.className = "text-red-800";
+          clearInterval(synthLoopInterval);
+        }
+      });
+    }
+
+    // ------------------------------------------------------------------------
+    // 5. INTERACTIVE RETRO TERMINAL CONSOLE
+    // ------------------------------------------------------------------------
+    function setupTerminal() {
+      const form = document.getElementById("terminal-form");
+      const input = document.getElementById("terminal-input");
+      const history = document.getElementById("terminal-history");
+      const outputContainer = document.getElementById("terminal-output");
+
+      const commands = {
+        help: "Available commands: help, status, ping, matrix, whoami, clear",
+        status: `[OK] ${SITE_CONFIG.domainName} is online. Construction progress: 42%. Coffee levels: CRITICAL.`,
+        ping: `Pinging ${SITE_CONFIG.domainName} [127.0.0.1] with 32 bytes of data: Reply in 1ms TTL=64!`,
+        whoami: "You are a radical net-surfer exploring the early web frontier.",
+        matrix: "Wake up, Neo... The Matrix has you. Follow the white rabbit. 🐇"
+      };
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const raw = input.value.trim();
+        if (!raw) return;
+
+        const cmd = raw.toLowerCase();
+        playRetroBeep(520, 0.05);
+
+        if (cmd === "clear") {
+          history.innerHTML = "";
+          input.value = "";
+          return;
+        }
+
+        const userLine = document.createElement("div");
+        userLine.innerHTML = `<span class="text-cyan-400">guest@cyberspace:~$</span> <span class="text-white">${escapeHtml(raw)}</span>`;
+        history.appendChild(userLine);
+
+        const respLine = document.createElement("div");
+        respLine.className = "text-yellow-300";
+        respLine.textContent = commands[cmd] || `Bad command or file name: '${raw}'. Type 'help' for commands.`;
+        history.appendChild(respLine);
+
+        input.value = "";
+        outputContainer.scrollTop = outputContainer.scrollHeight;
+      });
+    }
+
+    // ------------------------------------------------------------------------
+    // 6. MINI GUESTBOOK SHOUTBOX
+    // ------------------------------------------------------------------------
+    function setupGuestbook() {
+      const form = document.getElementById("guestbook-form");
+      const nameInput = document.getElementById("gb-name");
+      const msgInput = document.getElementById("gb-msg");
+      const list = document.getElementById("guestbook-entries");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const handle = nameInput.value.trim() || "AnonSurfer";
+        const message = msgInput.value.trim();
+        if (!message) return;
+
+        const entry = document.createElement("div");
+        entry.className = "border-b border-dotted border-gray-400 pb-1 bg-yellow-100/70 px-1";
+        entry.innerHTML = `<span class="font-bold text-green-800">[${escapeHtml(handle)}]</span>: <span>${escapeHtml(message)}</span>`;
+
+        list.prepend(entry);
+        nameInput.value = "";
+        msgInput.value = "";
+        playRetroBeep(780, 0.08);
+        showToast("★ Guestbook signed! Thanks for stopping by!");
+      });
+    }
+
+    // ------------------------------------------------------------------------
+    // 7. WEBRING NAVIGATION & TOAST NOTIFICATION HELPER
+    // ------------------------------------------------------------------------
+    let toastTimeout = null;
+    function showToast(msg) {
+      const toast = document.getElementById("retro-toast");
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.remove("hidden");
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add("hidden");
+      }, 3500);
+    }
+
+    window.triggerWebRing = function (direction) {
+      playRetroBeep(600, 0.07);
+      const messages = {
+        prev: "⏪ Warp drive engaged! Searching for previous WebRing node...",
+        next: "⏩ Jumping to next GeoCities homestead in the ring...",
+        random: "🎲 Rolling 20-sided cyber-die for a random destination..."
+      };
+      showToast(messages[direction] || "Navigating WebRing...");
+    };
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // Initialize everything on DOM ready
+    window.addEventListener("DOMContentLoaded", () => {
+      applyDomainConfig();
+      updateRetroClock();
+      setInterval(updateRetroClock, 1000);
+      initHitCounter();
+      setupCrtToggle();
+      setupSynthToggle();
+      setupTerminal();
+      setupGuestbook();
+
+      document.getElementById("bump-counter-btn").addEventListener("click", () => {
+        currentHits += 1;
+        try {
+          localStorage.setItem("retro_hit_counter_v1", String(currentHits));
+        } catch (e) {}
+        renderHitCounter(currentHits);
+        playRetroBeep(880, 0.05);
+      });
+    });
+  </script>
 </body>
 </html>
